@@ -5,6 +5,7 @@
 
 class StringStack {
     public: 
+    //String
     std::string _str = "";
 
     /**
@@ -82,7 +83,7 @@ int main () {
             for(int iter = 0; iter < input.length(); iter ++) {
                 bracketString.push(input.at(iter));
                 
-                //Pop brackets
+                //Pop brackets if they match
                 if(iter != 0 and stackPtr != 0) {
                     if(bracketString._str.at(stackPtr - 1) == ')' and bracketString._str.at(stackPtr) == '(') {
                         stackPtr -= 2;
@@ -92,10 +93,9 @@ int main () {
                         stackPtr -= 2;
                     }
                 }
-                
-                std::cout << bracketString._str << std::endl;
             }
         } else {
+            //Invalid string, string contains other character than brackets.
             std::cout << "Invalid string!" << std::endl;
             validString = false;
         }
@@ -103,11 +103,14 @@ int main () {
         //Check if string is empty
         if(validString) {
             if(stackPtr == 0) {
+                //Stack is empty
                 std::cout << std::endl << "Correct!" << std::endl;
             } else {
+                //Stack is not empty
                 std::cout << std::endl << "Incorrect!" << std::endl;
             }
             
+            //Reset stack
             bracketString._str = "";
             stackPtr = 0;
         }
